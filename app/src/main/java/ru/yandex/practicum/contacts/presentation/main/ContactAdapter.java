@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.AdapterListUpdateCallback;
 import androidx.recyclerview.widget.AsyncDifferConfig;
@@ -56,8 +55,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         differ.submitList(items);
     }
 
-    public void setItems(List<ContactUi> items, @NonNull Runnable callback) {
-        differ.submitList(items, callback);
+
+
+    public void setItems(List<ru.yandex.practicum.contacts.presentation.main.ContactUi> contacts, Runnable runnable) {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -96,30 +96,25 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         }
     }
 
+        public class ContactUi implements ListDiffInterface<ContactUi> {
 
-    public class ContactUi implements ListDiffInterface<ContactUi> {
+            @Override
+                public boolean theSameAs(ContactUi contactUi) {
+                    return this.hashCode() == contactUi.hashCode();
+                }
+                    public int getName() {
+                        return 0;
+                    }
+                        public CharSequence getPhone() {
+                            return null;
+                        }
 
-        @Override
-        public boolean theSameAs(ContactUi contactUi) {
-            return this.hashCode() == contactUi.hashCode();
+                        public List<ContactType> getTypes() {
+                            return null;
+                        }
 
-
-        }
-
-        public int getName() {
-            return 0;
-        }
-
-        public CharSequence getPhone() {
-            return null;
-        }
-
-        public List<ContactType> getTypes() {
-            return null;
-        }
-
-        public byte[] getPhoto() {
-            return new byte[0];
-        }
-    }
-}
+                        public byte[] getPhoto() {
+                            return new byte[0];
+                        }
+                    }
+                }
