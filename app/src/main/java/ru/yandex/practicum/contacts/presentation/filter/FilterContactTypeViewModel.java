@@ -96,6 +96,9 @@ public class FilterContactTypeViewModel extends BaseBottomSheetViewModel {
         }
     }
 
+    public void onFilterTypeItemClick(FilterContactTypeAdapter.FilterContactTypeUi filterContactTypeUi) {
+    }
+
     static class UiState {
         public boolean isApplyEnable = false;
         public Set<ContactType> newSelectedContactTypes = Collections.emptySet();

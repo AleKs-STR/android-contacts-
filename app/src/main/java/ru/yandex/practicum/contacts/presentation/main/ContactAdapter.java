@@ -23,12 +23,15 @@ import java.util.Objects;
 
 import ru.yandex.practicum.contacts.R;
 import ru.yandex.practicum.contacts.databinding.ItemContactBinding;
+import ru.yandex.practicum.contacts.model.ContactType;
+import ru.yandex.practicum.contacts.presentation.base.BaseListDiffCallback;
+import ru.yandex.practicum.contacts.presentation.base.ListDiffInterface;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder> {
 
     private final AsyncListDiffer<ContactUi> differ = new AsyncListDiffer<>(
             new AdapterListUpdateCallback(this),
-            new AsyncDifferConfig.Builder<>(new ListDiffCallback()).build()
+            new AsyncDifferConfig.Builder<>(new BaseListDiffCallback<ContactUi>()).build()
     );
 
     @NonNull
@@ -93,22 +96,30 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         }
     }
 
-    static class ListDiffCallback extends DiffUtil.ItemCallback<ContactUi> {
+
+    public class ContactUi implements ListDiffInterface<ContactUi> {
 
         @Override
-        public boolean areItemsTheSame(@NonNull ContactUi oldItem, @NonNull ContactUi newItem) {
-            return oldItem.hashCode() == newItem.hashCode();
+        public boolean theSameAs(ContactUi contactUi) {
+            return this.hashCode() == contactUi.hashCode();
+
+
         }
 
-        @Override
-        public boolean areContentsTheSame(@NonNull ContactUi oldItem, @NonNull ContactUi newItem) {
-            return oldItem.equals(newItem);
+        public int getName() {
+            return 0;
         }
 
-        @Nullable
-        @Override
-        public Object getChangePayload(@NonNull ContactUi oldItem, @NonNull ContactUi newItem) {
-            return newItem;
+        public CharSequence getPhone() {
+            return null;
+        }
+
+        public List<ContactType> getTypes() {
+            return null;
+        }
+
+        public byte[] getPhoto() {
+            return new byte[0];
         }
     }
 }
