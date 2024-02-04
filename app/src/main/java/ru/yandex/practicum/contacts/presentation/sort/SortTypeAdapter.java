@@ -1,16 +1,13 @@
 package ru.yandex.practicum.contacts.presentation.sort;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.AdapterListUpdateCallback;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.AsyncListDiffer;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -19,7 +16,6 @@ import java.util.function.Consumer;
 import ru.yandex.practicum.contacts.R;
 import ru.yandex.practicum.contacts.databinding.ItemSortBinding;
 import ru.yandex.practicum.contacts.presentation.base.BaseListDiffCallback;
-import ru.yandex.practicum.contacts.presentation.base.ListDiffInterface;
 import ru.yandex.practicum.contacts.presentation.sort.model.SortType;
 
 public class SortTypeAdapter extends RecyclerView.Adapter<SortTypeAdapter.ViewHolder> {
@@ -91,22 +87,7 @@ public class SortTypeAdapter extends RecyclerView.Adapter<SortTypeAdapter.ViewHo
             }
         }
     }
-
-
-    public class SortTypeUI implements ListDiffInterface<SortTypeUI> {
-
-        @Override
-        public boolean theSameAs(SortTypeUI sortTypeUI) {
-            return this.getSortType() == sortTypeUI.getSortType();
-        }
-
-        public SortType getSortType() {
-            return null;
-        }
-
-        public boolean isSelected() {
-            return false;
-        }
-    }
 }
+
+
 

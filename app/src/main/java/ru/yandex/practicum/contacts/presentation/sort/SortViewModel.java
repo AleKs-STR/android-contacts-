@@ -67,8 +67,7 @@ public class SortViewModel extends BaseBottomSheetViewModel {
         uiStateLiveDate.setValue(uiState);
     }
 
-    public void onSortTypeItemClick(SortTypeAdapter.SortTypeUI sortTypeUI) {
-    }
+
 
     static class UiState {
         public boolean isApplyEnable = false;

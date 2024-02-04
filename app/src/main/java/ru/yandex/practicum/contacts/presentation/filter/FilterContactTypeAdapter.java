@@ -16,8 +16,8 @@ import java.util.function.Consumer;
 import ru.yandex.practicum.contacts.databinding.ItemFilterBinding;
 import ru.yandex.practicum.contacts.model.ContactType;
 import ru.yandex.practicum.contacts.presentation.base.BaseListDiffCallback;
-import ru.yandex.practicum.contacts.presentation.base.ListDiffInterface;
 import ru.yandex.practicum.contacts.presentation.filter.model.FilterContactType;
+import ru.yandex.practicum.contacts.presentation.filter.model.FilterContactTypeUi;
 import ru.yandex.practicum.contacts.utils.model.ContactTypeUtils;
 import ru.yandex.practicum.contacts.utils.model.FilterContactTypeUtils;
 
@@ -85,24 +85,10 @@ public class FilterContactTypeAdapter extends RecyclerView.Adapter<FilterContact
             }
         }
     }
-
-    public static class FilterContactTypeUi implements ListDiffInterface<FilterContactTypeUi> {
-
-        @Override
-        public boolean theSameAs(FilterContactTypeUi newfilterContactTypeUi) {
-            return this.getContactType() == newfilterContactTypeUi.getContactType();
-        }
-
-        public FilterContactType getContactType() {
-
-            return null;
-        }
-
-        public boolean isSelected() {
-
-            return false;
-        }
-    }
-
 }
+
+
+
+
+
 
